@@ -1,3 +1,3 @@
-module github.com/jability/go-systemhalys
+module github.com/jability/systemhalys
 
 go 1.14
