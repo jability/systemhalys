@@ -1,3 +1,3 @@
-module gitlab.halys.fr/libs/go-systemhalys
+module github.com/jability/go-systemhalys
 
 go 1.14
