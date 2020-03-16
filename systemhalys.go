@@ -6,6 +6,7 @@ import (
 	"io"
 	"os"
 	"regexp"
+	"strings"
 )
 
 const newLine = '\n'
@@ -37,11 +38,11 @@ func loadFromReader(r io.Reader) *Config {
 	s := newLineScanner(r)
 	c := newConfig()
 
-	regex := regexp.MustCompile(`^\s*(?P<Key>[\w\d-_]+)\s+(?P<Value>[^\s]+)\s*$`)
+	regex := regexp.MustCompile(`^\s*(?P<Key>[\w\d-_]+)\s+(?P<Value>.+)$`)
 	for s.Scan() {
 		match := regex.FindStringSubmatch(s.Text())
 		if match != nil {
-			c.data[match[1]] = match[2]
+			c.data[match[1]] = strings.TrimSpace(match[2])
 		}
 	}
 	return c

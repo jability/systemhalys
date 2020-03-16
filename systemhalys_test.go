@@ -42,7 +42,8 @@ func TestLoad(t *testing.T) {
 INDEX_2 OK
    INDEX_3 OK
 #INDEX_4 NOK
- INDEX-5 OK`
+ INDEX-5 OK
+    	IN_DEX-6 OK PLUSIEURS OK`
 
 	c := Load(strings.NewReader(content))
 
@@ -56,6 +57,7 @@ INDEX_2 OK
 		{"INDEX_3", "OK", true},
 		{"INDEX_4", "", false},
 		{"INDEX-5", "OK", true},
+		{"IN_DEX-6", "OK PLUSIEURS OK", true},
 	}
 
 	for _, tt := range tests {
